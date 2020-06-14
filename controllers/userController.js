@@ -3,6 +3,7 @@ const UserModel = require('../models/user')
 
 exports.register = async (req, res) => {
   try {
+    let result
     const {
       phone,
       first_name,
@@ -26,12 +27,12 @@ exports.register = async (req, res) => {
       foundTarget.city = city
       foundTarget.address_line = address_line
       foundTarget.postal_code = postal_code
-      const result = await foundTarget.save()
+      result = await foundTarget.save()
       console.log('result:', result)
     }
 
     return res.json({
-      data: 'result'
+      data: result
     })
     
   } catch (error) {
